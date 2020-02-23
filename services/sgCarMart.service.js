@@ -5,8 +5,10 @@ const login = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto("https://dealer.sgcarmart.com/login");
-  await page.type('#username', 'test@gmail.com');
-  await page.type('#password', 'samplepwd');
+  console.log('process.env.LOGIN_ACCOUNT', process.env.LOGIN_ACCOUNT);
+  console.log('process.env.LOGIN_PASSWORD', process.env.LOGIN_PASSWORD);
+  await page.type('#username', process.env.LOGIN_ACCOUNT);
+  await page.type('#password', process.env.LOGIN_PASSWORD);
   await page.keyboard.press('Enter');
 
   await page.waitForNavigation();
